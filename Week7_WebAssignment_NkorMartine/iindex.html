@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS & JS Animation Playground</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Bootstrap (optional) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+  <!-- Prism.js for syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md">
+    <div class="container mx-auto px-4 py-6">
+      <h1 class="text-3xl font-bold">CSS & JavaScript Animation Playground</h1>
+      <p class="mt-2 text-lg">Explore, build, and customize animations interactively</p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-10 space-y-16">
+    <!-- ========== PRESET ANIMATIONS ========== -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6">Preset Animations</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="card">
+          <h3 class="text-lg font-semibold mb-2">Fade In</h3>
+          <div class="demo-box fade-in"></div>
+          <pre><code class="language-css">.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}</code></pre>
+        </div>
+
+        <div class="card">
+          <h3 class="text-lg font-semibold mb-2">Slide In</h3>
+          <div class="demo-box slide-in-up"></div>
+          <pre><code class="language-css">.slide-in-up {
+  animation: slideInUp 1s ease forwards;
+}
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}</code></pre>
+        </div>
+
+        <div class="card">
+          <h3 class="text-lg font-semibold mb-2">Rotate</h3>
+          <div class="demo-box rotate-360"></div>
+          <pre><code class="language-css">.rotate-360 {
+  animation: rotate360 1s linear forwards;
+}
+@keyframes rotate360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CUSTOM ANIMATION BUILDER ========== -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6">Custom Animation Builder</h2>
+      <div class="bg-white shadow-lg rounded-xl p-6 grid md:grid-cols-2 gap-8">
+        <!-- Form -->
+        <form id="animation-builder-form" class="space-y-4">
+          <div>
+            <label for="animation-name" class="form-label">Animation Name</label>
+            <input id="animation-name" type="text" placeholder="e.g., bounceIn"
+              class="form-control border rounded-lg p-2 w-full">
+          </div>
+          <div>
+            <label for="animation-duration" class="form-label">Duration (s)</label>
+            <input id="animation-duration" type="number" min="0.1" step="0.1" value="1"
+              class="form-control border rounded-lg p-2 w-full">
+          </div>
+          <div>
+            <label for="animation-type" class="form-label">Animation Type</label>
+            <select id="animation-type" class="form-select border rounded-lg p-2 w-full">
+              <option value="fade">Fade</option>
+              <option value="slide">Slide</option>
+              <option value="rotate">Rotate</option>
+              <option value="scale">Scale</option>
+              <option value="bounce">Bounce</option>
+              <option value="shake">Shake</option>
+              <option value="flip">Flip</option>
+            </select>
+          </div>
+          <div>
+            <label for="trigger-type" class="form-label">Trigger Type</label>
+            <select id="trigger-type" class="form-select border rounded-lg p-2 w-full">
+              <option value="load">On Load</option>
+              <option value="hover">On Hover</option>
+              <option value="click">On Click</option>
+              <option value="submit">On Submit</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-full">Generate Animation</button>
+        </form>
+
+        <!-- Preview -->
+        <div class="flex flex-col items-center justify-center space-y-4">
+          <div id="preview-element"
+               class="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg">
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Generated CSS</h3>
+            <pre><code id="generated-css" class="language-css">/* Your CSS will appear here */</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Prism.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
